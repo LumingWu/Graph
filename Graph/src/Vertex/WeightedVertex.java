@@ -1,29 +1,40 @@
 package Vertex;
 
-import Relation.Adjacency;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-public class WeightedVertex implements Comparable<WeightedVertex>{
+public class WeightedVertex extends Vertex{
     
-    public double weight = Double.POSITIVE_INFINITY;
-    public String name;
-    public Vertex predecesspr = null;
-    public Vertex successor = null;
-    public ArrayList<Adjacency> staticAdjacencies = new ArrayList<Adjacency>();
-    public LinkedList<Adjacency> activeAdjacencies = new LinkedList<Adjacency>();
+    private Vertex _predecessor = null;
+    private Vertex _successor = null;
+    private double _weight = Double.POSITIVE_INFINITY;
 
+    public WeightedVertex(String id, double weight){
+        super(id);
+        _weight = weight;
+    }
     public WeightedVertex(String id) {
-        name = id;
+        super(id);
     }
     
-    @Override
-    public String toString(){
-        return name;
+    public double weight(){
+        return _weight;
     }
-
-    @Override
-    public int compareTo(WeightedVertex o) {
-        return name.compareTo(o.name);
+    
+    public void setWeight(double weight){
+        _weight = weight;
+    }
+    
+    public Vertex predecessor(){
+        return _predecessor;
+    }
+    
+    public void setPredecessor(Vertex predecessor){
+        _predecessor = predecessor;
+    }
+    
+    public Vertex successor(){
+        return _successor;
+    }
+    
+    public void setSuccessor(Vertex successor){
+        _successor = successor;
     }
 }

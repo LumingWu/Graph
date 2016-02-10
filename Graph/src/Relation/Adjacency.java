@@ -1,23 +1,36 @@
 package Relation;
 
-public class Adjacency<T extends Comparable<? super T>> implements Comparable<Adjacency<T>>{
-    
-    public T target;
-    public double weight;
-    
-    public Adjacency(T object, double length){
-        target = object;
-        weight = length;
-    }
+import Vertex.Vertex;
 
-    @Override
-    public int compareTo(Adjacency<T> o) {
-        int difference = target.compareTo(o.target);
-        if(difference == 0){
-            return (int)(weight - o.weight);
-        }
-        else{
-            return difference;
-        }
+/**
+ * Vertex property Adjacency.
+ * @author Luming Wu
+ * @param <V> 
+ */
+public class Adjacency<V extends Vertex>{
+    
+    private final V _target;
+    private final double _weight;
+    
+    public Adjacency(V target, double weight){
+        _target = target;
+        _weight = weight;
     }
+    
+    /**
+     * Get the adjacent vertex.
+     * @return Vertex
+     */
+    public V target(){
+        return _target;
+    }
+    
+    /**
+     * Get the weight of the adjacency.
+     * @return double
+     */
+    public double weight(){
+        return _weight;
+    }
+    
 }
